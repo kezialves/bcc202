@@ -1,45 +1,57 @@
 #ifndef _ORDENACAO_H_
 #define _ORDENACAO_H_
 
-// TAD que armazena os dados de um objeto
-typedef struct {
-    char nome[4];
-    Ponto *trajetoria;
-    float distancia;
-    float deslocamento;
-} Objeto;
-
 // TAD que armazena as coordenadas de um ponto
 typedef struct {
     float x;
     float y;
 } Ponto;
 
-// aloca um vetor de TAD Objeto
-Objeto ** alocaObjetos(int totalObjetos);
+// TAD que armazena os dados de um objeto
+typedef struct {
+    char nome[5];
+    Ponto *trajetoria;
+    float distancia;
+    float deslocamento;
+} Objeto;
 
-// aloca um vetor de TAD Ponto
+// Aloca um vetor de TAD Objeto
+void alocaObjetos(Objeto *objetos, int totalObjetos, int totalPontos);
+
+// Aloca um vetor de TAD Ponto
 void alocaPontos(Objeto *objetos, int totalObjetos, int totalPontos);
 
-// desaloca um vetor de TAD Ponto
-void desalocaPontos(Objeto *objetos, int totalPontos, int totalObjetos);
+// Desaloca um vetor de TAD Ponto
+void desalocaPontos(Objeto *objetos, int totalObjetos);
 
-// desaloca os objetos
+// Desaloca os objetos
 void desalocaObjetos(Objeto *objetos, int totalObjetos);
 
-// apenas Pitágoras
+// Lê e preenche o vetor de TAD Objeto
+void leObjetos(Objeto *objetos, int totalObjetos, int totalPontos);
+
+// Apenas Pitágoras
 float teoremaPitagoras(int x1, int y1, int x2, int y2);
 
-//  calcula a distância percorrida considerando os pontos que estão em um vetor de TAD Ponto
-void calcularDistancia(Objeto **objetos, int totalObjetos, int totalPontos);
+// Calcula a distância percorrida considerando os pontos que estão em um vetor de TAD Ponto
+void calculaDistancia(Objeto *objetos, int totalObjetos, int totalPontos);
 
-// calcula o deslocamento considerando os pontos que estão em um vetor de TAD Ponto
-void calcularDeslocamento(Objeto **objetos, int totalObjetos, int totalPontos);
+// Calcula o deslocamento considerando os pontos que estão em um vetor de TAD Ponto
+void calculaDeslocamento(Objeto *objetos, int totalObjetos, int totalPontos);
 
-// ordena um vetor de trajetórias, onde cada trajetória é um vetor de TAD Ponto
-void ordenaVetor(Ponto *vetorTrajetorias);
+// Compara os nomes dos objetos para colocar em ordem alfabética
+int comparaObjetos(Objeto *objeto1, Objeto *objeto2);
 
-// imprime o vetor de TAD Ponto ordenado
+// Ordena um vetor de objetos utilizando o ShellSort
+void ordenaObjetos(Objeto *objetos, int totalObjetos);
+
+// Imprime o vetor de TAD Objeto ordenado
 void imprimeVetor(Objeto *objetos, int totalObjetos);
+
+// Ordena um vetor de objetos utilizando o MergeSort
+// void mergeSort(Objeto *objetos, int totalPontos, int inicio, int fim);
+
+// Auxiliar do MergeSort
+// void merge(Objeto *objetos, int totalPontos, int inicio, int meio, int fim);
 
 #endif
