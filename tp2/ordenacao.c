@@ -81,34 +81,54 @@ void calculaDeslocamento(Objeto *objetos, int totalObjetos, int totalPontos) {
 
 int comparaObjetos(Objeto *objeto1, Objeto *objeto2) {
 
-    // Analisar se o módulo da diferença entre os dois números é < 0.01
+    // A precisão de comparação entre dois números de ponto flutuante é igual a 0.01
+    // Se o módulo da diferença entre os números for <= 0.01, eles são iguais
+    // Caso contrário, compara-se para ver qual é o maior
+    // Se A - B > 0.01, A é maior
+    // Se B - A > 0.01, B é maior
     
-    if(objeto1->distancia < objeto2->distancia)
-        return 1;
+    // Ordena as distâncias de forma decrescente
+    if((fabsf(objeto1->distancia - objeto2->distancia)) > 0.01) {
 
-    else if(objeto1->distancia > objeto2->distancia)
-        return -1;
-
-    else {
-
-        if(objeto1->deslocamento > objeto2->deslocamento)
+        if((objeto1->distancia - objeto2->distancia) > 0.01)
             return -1;
 
-        else if(objeto1->deslocamento < objeto2->deslocamento)
+        else if((objeto2->distancia - objeto1->distancia) > 0.01)
             return 1;
+    }
 
-        else {
+    // Se as distâncias forem iguais
+    // Ordena os deslocamentos de forma crescente
+    else {
 
-            if(strcmp(objeto1->nome, objeto2->nome) < 0)
+        if((fabsf(objeto1->deslocamento - objeto2->deslocamento)) > 0.01) {
+
+            if((objeto1->deslocamento - objeto2->deslocamento) > 0.01)
                 return 1;
 
-            else if(strcmp(objeto1->nome, objeto2->nome) == 0)
-                return 0;
-
-            else
+            else if((objeto2->deslocamento - objeto1->deslocamento) > 0.01)
                 return -1;
         }
+
+        // Se os deslocamentos forem iguais
+        // Ordena em ordem alfabética de forma crescente
+        else {
+
+            // A função strcmp retorna a soma dos valores da string
+            // Se a soma for == 0, a string é igual
+            // Senão, se a soma for < 0, a segunda string é maior
+            // Senão, a soma é > 0, ou seja, a primeira string é maior
+            // A maior string é a última em ordem alfabética
+
+            if(strcmp(objeto1->nome, objeto2->nome) > 0)
+                return 1;
+
+            else
+                return 0;
+        }
     }
+
+    return 0;
 }
 
 void ordenaObjetos(Objeto *objetos, int totalObjetos) {
