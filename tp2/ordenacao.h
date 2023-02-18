@@ -16,7 +16,7 @@ typedef struct {
 } Objeto;
 
 // Aloca um vetor de TAD Objeto
-void alocaObjetos(Objeto *objetos, int totalObjetos, int totalPontos);
+Objeto * alocaObjetos(int totalObjetos, int totalPontos);
 
 // Aloca um vetor de TAD Ponto
 void alocaPontos(Objeto *objetos, int totalObjetos, int totalPontos);

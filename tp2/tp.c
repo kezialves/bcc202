@@ -8,7 +8,7 @@ int main() {
 
     scanf("%d %d", &totalObjetos, &totalPontos);
 
-    alocaObjetos(objetos, totalObjetos, totalPontos);
+    objetos = alocaObjetos(totalObjetos, totalPontos);
 
     leObjetos(objetos, totalObjetos, totalPontos);
 

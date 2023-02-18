@@ -4,11 +4,13 @@
 #include <string.h>
 #include "ordenacao.h"
 
-void alocaObjetos(Objeto *objetos, int totalObjetos, int totalPontos) {
+Objeto * alocaObjetos(int totalObjetos, int totalPontos) {
 
-    objetos = (Objeto*) malloc(totalObjetos * sizeof(Objeto));
+    Objeto *objetos = (Objeto*) malloc(totalObjetos * sizeof(Objeto));
 
     alocaPontos(objetos, totalObjetos, totalPontos);
+
+    return objetos;
 }
 
 void alocaPontos(Objeto *objetos, int totalObjetos, int totalPontos) {
@@ -82,29 +84,29 @@ int comparaObjetos(Objeto *objeto1, Objeto *objeto2) {
     // Analisar se o módulo da diferença entre os dois números é < 0.01
     
     if(objeto1->distancia < objeto2->distancia)
-        return -1;
+        return 1;
 
     else if(objeto1->distancia > objeto2->distancia)
-        return 1;
+        return -1;
 
     else {
 
         if(objeto1->deslocamento > objeto2->deslocamento)
-            return 1;
+            return -1;
 
         else if(objeto1->deslocamento < objeto2->deslocamento)
-            return -1;
+            return 1;
 
         else {
 
             if(strcmp(objeto1->nome, objeto2->nome) < 0)
-                return -1;
+                return 1;
 
             else if(strcmp(objeto1->nome, objeto2->nome) == 0)
                 return 0;
 
             else
-                return 1;
+                return -1;
         }
     }
 }
