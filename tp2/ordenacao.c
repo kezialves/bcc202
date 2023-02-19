@@ -114,8 +114,8 @@ int comparaObjetos(Objeto *objeto1, Objeto *objeto2) {
         // Ordena em ordem alfabética de forma crescente
         else {
 
-            // A função strcmp retorna a soma dos valores da string
-            // Se a soma for == 0, a string é igual
+            // A função strcmp retorna a soma dos valores de duas strings
+            // Se a soma for == 0, as strings são iguais
             // Senão, se a soma for < 0, a segunda string é maior
             // Senão, a soma é > 0, ou seja, a primeira string é maior
             // A maior string é a última em ordem alfabética
