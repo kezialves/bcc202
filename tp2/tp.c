@@ -6,7 +6,15 @@ int main() {
     int totalObjetos, totalPontos;
     Objeto *objetos;
 
-    scanf("%d %d", &totalObjetos, &totalPontos);
+    if(!leTotalObjetos(&totalObjetos)) {
+        printf("\nERRO: Número de objetos inválido. O mínimo é 1.\n");
+        return 0;
+    }
+
+    if(!leTotalPontos(&totalPontos)) {
+        printf("\nERRO: Número de pontos inválido. O mínimo é 1.\n");
+        return 0;
+    }
 
     objetos = alocaObjetos(totalObjetos, totalPontos);
 
@@ -17,7 +25,9 @@ int main() {
 
     // mergeSort(objetos, totalPontos, 0, totalObjetos - 1);
 
-    ordenaObjetos(objetos, totalObjetos);
+    // Se tiver apenas 1 objeto, não é necessário ordenar
+    if(totalObjetos != 1)
+        ordenaObjetos(objetos, totalObjetos);
 
     imprimeVetor(objetos, totalObjetos);
 

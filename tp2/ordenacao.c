@@ -4,6 +4,26 @@
 #include <string.h>
 #include "ordenacao.h"
 
+int leTotalObjetos(int *totalObjetos) {
+
+    scanf("%d", totalObjetos);
+
+    if(*totalObjetos < 1) 
+        return 0;
+
+    return 1;
+}
+
+int leTotalPontos(int *totalPontos) {
+    
+    scanf("%d", totalPontos);
+
+    if(*totalPontos < 1) 
+        return 0;
+
+    return 1;
+}
+
 Objeto * alocaObjetos(int totalObjetos, int totalPontos) {
 
     Objeto *objetos = (Objeto*) malloc(totalObjetos * sizeof(Objeto));
@@ -131,6 +151,7 @@ int comparaObjetos(Objeto *objeto1, Objeto *objeto2) {
     return 0;
 }
 
+//Shell sort
 void ordenaObjetos(Objeto *objetos, int totalObjetos) {
 
     int h, j;

@@ -9,11 +9,17 @@ typedef struct {
 
 // TAD que armazena os dados de um objeto
 typedef struct {
-    char nome[5];
+    char nome[50];
     Ponto *trajetoria;
     float distancia;
     float deslocamento;
 } Objeto;
+
+// Lê a quantidade total de objetos
+int leTotalObjetos(int *totalObjetos);
+
+// Lê a quantidade total de pontos
+int leTotalPontos(int *totalPontos);
 
 // Aloca um vetor de TAD Objeto
 Objeto * alocaObjetos(int totalObjetos, int totalPontos);
